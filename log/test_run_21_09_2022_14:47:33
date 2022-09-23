@@ -1,0 +1,34 @@
+2022-09-21 14:47:33,639 - test_run_21_09_2022_14:47:33 - [INFO] - {'name': 'test_run_21_09_2022_14:47:33', 'dataset': 'WN18RR', 'model': 'hran', 'score_func': 'transe', 'batch_size': 2048, 'test_batch_size': 256, 'gamma': 9.0, 'gpu': '0', 'max_epochs': 2, 'l2': 0.0, 'lr': 0.001, 'lbl_smooth': 0.1, 'num_workers': 8, 'seed': 41504, 'restore': False, 'bias': False, 'aggr': 'add', 'init_dim': 100, 'gcn_dim': 200, 'embed_dim': 200, 'gcn_layer': 1, 'dropout': 0.3, 'hid_drop': 0.1, 'hid_drop2': 0.3, 'feat_drop': 0.3, 'k_w': 10, 'k_h': 20, 'num_filt': 200, 'ker_sz': 7, 'log_dir': './log/', 'config_dir': './config/', 'neg_num': 1, 'strategy': 'one_to_x', 'head_num': 1, 'early_stop': 200, 'no_enc': False, 'max_gamma': 5.0, 'fix_gamma': False, 'init_gamma': 9.0}
+2022-09-21 14:47:35,082 - test_run_21_09_2022_14:47:33 - [INFO] - num_ent 40943 num_rel 11
+
+2022-09-21 14:47:35,082 - test_run_21_09_2022_14:47:33 - [INFO] - train set num is 173670
+
+2022-09-21 14:47:35,082 - test_run_21_09_2022_14:47:33 - [INFO] - test_tail num is 3134
+
+2022-09-21 14:47:35,082 - test_run_21_09_2022_14:47:33 - [INFO] - valid_tail num is 3034
+
+2022-09-21 14:48:12,399 - test_run_21_09_2022_14:47:33 - [INFO] - [E:0| 0]: Train Loss:8.9714,  Val MRR:0.0	test_run_21_09_2022_14:47:33
+2022-09-21 14:51:15,340 - test_run_21_09_2022_14:47:33 - [INFO] - [Epoch:0]:  Training Loss:3.517
+
+2022-09-21 14:51:21,367 - test_run_21_09_2022_14:47:33 - [INFO] - [Evaluating Epoch 0 valid]: 
+	MRR: Tail : 0.00136, Head : 0.00082, Avg : 0.00109
+
+2022-09-21 14:51:21,422 - test_run_21_09_2022_14:47:33 - [INFO] - [Epoch 0]: Training Loss: 3.517, Best valid MRR: 0.00109
+
+
+2022-09-21 14:51:40,371 - test_run_21_09_2022_14:47:33 - [INFO] - [E:1| 0]: Train Loss:1.661,  Val MRR:0.00109	test_run_21_09_2022_14:47:33
+2022-09-21 14:54:44,554 - test_run_21_09_2022_14:47:33 - [INFO] - [Epoch:1]:  Training Loss:1.453
+
+2022-09-21 14:54:50,556 - test_run_21_09_2022_14:47:33 - [INFO] - [Evaluating Epoch 1 valid]: 
+	MRR: Tail : 0.00063, Head : 0.00101, Avg : 0.00082
+
+2022-09-21 14:54:50,556 - test_run_21_09_2022_14:47:33 - [INFO] - [Epoch 1]: Training Loss: 1.4527, Best valid MRR: 0.00109
+
+
+2022-09-21 14:54:50,556 - test_run_21_09_2022_14:47:33 - [INFO] - Loading best model, Evaluating on Test data
+2022-09-21 14:54:56,759 - test_run_21_09_2022_14:47:33 - [INFO] - [Evaluating Epoch 0 test]: 
+	MRR: Tail : 0.00163, Head : 0.00123, Avg : 0.00143
+	MR: Tail : 1.6862e+04, Head : 1.6838e+04, Avg : 1.685e+04
+	Hit-1: Tail : 0.00096, Head : 0.00032, Avg : 0.00064
+	Hit-3: Tail : 0.00096, Head : 0.00096, Avg : 0.00096
+	Hit-10: Tail : 0.00223, Head : 0.00191, Avg : 0.00207

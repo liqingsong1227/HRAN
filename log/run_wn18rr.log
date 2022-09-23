@@ -1,0 +1,350 @@
++ python run.py -epoch 1500 -name HRAN_ConvD -model hran -hid_drop 0.1 -gcn_drop 0.3 -score_func convd -data WN18RR
+2022-09-21 15:49:22,605 - [INFO] - {'name': 'HRAN_ConvD_21_09_2022_15:49:22', 'dataset': 'WN18RR', 'model': 'hran', 'score_func': 'convd', 'batch_size': 2048, 'test_batch_size': 256, 'gamma': 9.0, 'gpu': '0', 'max_epochs': 1500, 'l2': 0.0, 'lr': 0.001, 'lbl_smooth': 0.1, 'num_workers': 8, 'seed': 41504, 'restore': False, 'bias': False, 'aggr': 'add', 'init_dim': 100, 'gcn_dim': 200, 'embed_dim': 200, 'gcn_layer': 1, 'dropout': 0.3, 'hid_drop': 0.1, 'hid_drop2': 0.3, 'feat_drop': 0.3, 'k_w': 10, 'k_h': 20, 'num_filt': 200, 'ker_sz': 7, 'log_dir': './log/', 'config_dir': './config/', 'neg_num': 1, 'strategy': 'one_to_x', 'head_num': 1, 'early_stop': 200, 'no_enc': False, 'max_gamma': 5.0, 'fix_gamma': False, 'init_gamma': 9.0}
+2022-09-21 15:49:23,971 - [INFO] - num_ent 40943 num_rel 11
+
+2022-09-21 15:49:23,972 - [INFO] - train set num is 173670
+
+2022-09-21 15:49:23,972 - [INFO] - test_tail num is 3134
+
+2022-09-21 15:49:23,972 - [INFO] - valid_tail num is 3034
+
+2022-09-21 15:50:04,701 - [INFO] - [E:0| 0]: Train Loss:6.918,  Val MRR:0.0	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 15:53:58,048 - [INFO] - [Epoch:0]:  Training Loss:1.501
+
+2022-09-21 15:54:05,217 - [INFO] - [Evaluating Epoch 0 valid]: 
+	MRR: Tail : 0.01097, Head : 0.0039, Avg : 0.00743
+
+2022-09-21 15:54:05,460 - [INFO] - [Epoch 0]: Training Loss: 1.5008, Best valid MRR: 0.00743
+
+
+2022-09-21 15:54:27,868 - [INFO] - [E:1| 0]: Train Loss:0.69441,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 15:58:22,865 - [INFO] - [Epoch:1]:  Training Loss:0.7381
+
+2022-09-21 15:58:30,007 - [INFO] - [Evaluating Epoch 1 valid]: 
+	MRR: Tail : 0.00869, Head : 0.00249, Avg : 0.00559
+
+2022-09-21 15:58:30,007 - [INFO] - [Epoch 1]: Training Loss: 0.7381, Best valid MRR: 0.00743
+
+
+2022-09-21 15:58:52,688 - [INFO] - [E:2| 0]: Train Loss:0.7194,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:02:46,165 - [INFO] - [Epoch:2]:  Training Loss:0.7205
+
+2022-09-21 16:02:53,368 - [INFO] - [Evaluating Epoch 2 valid]: 
+	MRR: Tail : 0.00827, Head : 0.00321, Avg : 0.00574
+
+2022-09-21 16:02:53,369 - [INFO] - [Epoch 2]: Training Loss: 0.72048, Best valid MRR: 0.00743
+
+
+2022-09-21 16:03:16,374 - [INFO] - [E:3| 0]: Train Loss:0.70933,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:07:09,125 - [INFO] - [Epoch:3]:  Training Loss:0.7161
+
+2022-09-21 16:07:16,271 - [INFO] - [Evaluating Epoch 3 valid]: 
+	MRR: Tail : 0.00707, Head : 0.00409, Avg : 0.00558
+
+2022-09-21 16:07:16,271 - [INFO] - [Epoch 3]: Training Loss: 0.71608, Best valid MRR: 0.00743
+
+
+2022-09-21 16:07:38,767 - [INFO] - [E:4| 0]: Train Loss:0.69313,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:11:33,087 - [INFO] - [Epoch:4]:  Training Loss:0.7046
+
+2022-09-21 16:11:40,272 - [INFO] - [Evaluating Epoch 4 valid]: 
+	MRR: Tail : 0.00593, Head : 0.00407, Avg : 0.005
+
+2022-09-21 16:11:40,273 - [INFO] - [Epoch 4]: Training Loss: 0.7046, Best valid MRR: 0.00743
+
+
+2022-09-21 16:12:02,666 - [INFO] - [E:5| 0]: Train Loss:0.66206,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:15:59,757 - [INFO] - [Epoch:5]:  Training Loss:0.6929
+
+2022-09-21 16:16:06,900 - [INFO] - [Evaluating Epoch 5 valid]: 
+	MRR: Tail : 0.00785, Head : 0.00402, Avg : 0.00593
+
+2022-09-21 16:16:06,900 - [INFO] - [Epoch 5]: Training Loss: 0.69293, Best valid MRR: 0.00743
+
+
+2022-09-21 16:16:29,551 - [INFO] - [E:6| 0]: Train Loss:0.69503,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:20:24,249 - [INFO] - [Epoch:6]:  Training Loss:0.6769
+
+2022-09-21 16:20:31,418 - [INFO] - [Evaluating Epoch 6 valid]: 
+	MRR: Tail : 0.0058, Head : 0.00406, Avg : 0.00493
+
+2022-09-21 16:20:31,419 - [INFO] - [Epoch 6]: Training Loss: 0.67694, Best valid MRR: 0.00743
+
+
+2022-09-21 16:20:54,063 - [INFO] - [E:7| 0]: Train Loss:0.68276,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:24:54,428 - [INFO] - [Epoch:7]:  Training Loss:0.6684
+
+2022-09-21 16:25:01,648 - [INFO] - [Evaluating Epoch 7 valid]: 
+	MRR: Tail : 0.00585, Head : 0.00399, Avg : 0.00492
+
+2022-09-21 16:25:01,648 - [INFO] - [Epoch 7]: Training Loss: 0.6684, Best valid MRR: 0.00743
+
+
+2022-09-21 16:25:25,033 - [INFO] - [E:8| 0]: Train Loss:0.64849,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:29:27,739 - [INFO] - [Epoch:8]:  Training Loss:0.6602
+
+2022-09-21 16:29:34,898 - [INFO] - [Evaluating Epoch 8 valid]: 
+	MRR: Tail : 0.0082, Head : 0.00309, Avg : 0.00565
+
+2022-09-21 16:29:34,898 - [INFO] - [Epoch 8]: Training Loss: 0.66022, Best valid MRR: 0.00743
+
+
+2022-09-21 16:29:57,553 - [INFO] - [E:9| 0]: Train Loss:0.67237,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:33:58,140 - [INFO] - [Epoch:9]:  Training Loss:0.6596
+
+2022-09-21 16:34:05,451 - [INFO] - [Evaluating Epoch 9 valid]: 
+	MRR: Tail : 0.00635, Head : 0.00316, Avg : 0.00475
+	MR: Tail : 1.1588e+04, Head : 1.6434e+04, Avg : 1.4011e+04
+	Hit-1: Tail : 0.00033, Head : 0.0, Avg : 0.00016
+	Hit-3: Tail : 0.00461, Head : 0.00494, Avg : 0.00478
+	Hit-10: Tail : 0.01055, Head : 0.00593, Avg : 0.00824
+2022-09-21 16:34:05,451 - [INFO] - [Epoch 9]: Training Loss: 0.65961, Best valid MRR: 0.00743
+
+
+2022-09-21 16:34:27,919 - [INFO] - [E:10| 0]: Train Loss:0.6522,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:38:27,089 - [INFO] - [Epoch:10]:  Training Loss:0.6478
+
+2022-09-21 16:38:34,257 - [INFO] - [Evaluating Epoch 10 valid]: 
+	MRR: Tail : 0.00682, Head : 0.0042, Avg : 0.00551
+
+2022-09-21 16:38:34,257 - [INFO] - Gamma decay on saturation, updated value of gamma: 4.0
+2022-09-21 16:38:34,257 - [INFO] - [Epoch 10]: Training Loss: 0.64783, Best valid MRR: 0.00743
+
+
+2022-09-21 16:38:58,160 - [INFO] - [E:11| 0]: Train Loss:0.6443,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:42:58,111 - [INFO] - [Epoch:11]:  Training Loss:0.6432
+
+2022-09-21 16:43:05,314 - [INFO] - [Evaluating Epoch 11 valid]: 
+	MRR: Tail : 0.0076, Head : 0.00425, Avg : 0.00593
+
+2022-09-21 16:43:05,314 - [INFO] - [Epoch 11]: Training Loss: 0.64325, Best valid MRR: 0.00743
+
+
+2022-09-21 16:43:29,267 - [INFO] - [E:12| 0]: Train Loss:0.63357,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:47:30,039 - [INFO] - [Epoch:12]:  Training Loss:0.6405
+
+2022-09-21 16:47:37,277 - [INFO] - [Evaluating Epoch 12 valid]: 
+	MRR: Tail : 0.00765, Head : 0.00665, Avg : 0.00715
+
+2022-09-21 16:47:37,277 - [INFO] - [Epoch 12]: Training Loss: 0.64052, Best valid MRR: 0.00743
+
+
+2022-09-21 16:47:59,554 - [INFO] - [E:13| 0]: Train Loss:0.63345,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:52:01,380 - [INFO] - [Epoch:13]:  Training Loss:0.6388
+
+2022-09-21 16:52:08,545 - [INFO] - [Evaluating Epoch 13 valid]: 
+	MRR: Tail : 0.00731, Head : 0.00666, Avg : 0.00698
+
+2022-09-21 16:52:08,545 - [INFO] - [Epoch 13]: Training Loss: 0.63881, Best valid MRR: 0.00743
+
+
+2022-09-21 16:52:31,316 - [INFO] - [E:14| 0]: Train Loss:0.63784,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 16:56:47,495 - [INFO] - [Epoch:14]:  Training Loss:0.6396
+
+2022-09-21 16:56:54,820 - [INFO] - [Evaluating Epoch 14 valid]: 
+	MRR: Tail : 0.0078, Head : 0.00655, Avg : 0.00717
+
+2022-09-21 16:56:54,820 - [INFO] - [Epoch 14]: Training Loss: 0.63965, Best valid MRR: 0.00743
+
+
+2022-09-21 16:57:22,249 - [INFO] - [E:15| 0]: Train Loss:0.62675,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:01:27,517 - [INFO] - [Epoch:15]:  Training Loss:0.6383
+
+2022-09-21 17:01:34,772 - [INFO] - [Evaluating Epoch 15 valid]: 
+	MRR: Tail : 0.00811, Head : 0.00643, Avg : 0.00727
+
+2022-09-21 17:01:34,772 - [INFO] - [Epoch 15]: Training Loss: 0.63826, Best valid MRR: 0.00743
+
+
+2022-09-21 17:01:57,314 - [INFO] - [E:16| 0]: Train Loss:0.64348,  Val MRR:0.00743	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:05:54,597 - [INFO] - [Epoch:16]:  Training Loss:0.6362
+
+2022-09-21 17:06:01,890 - [INFO] - [Evaluating Epoch 16 valid]: 
+	MRR: Tail : 0.00859, Head : 0.00633, Avg : 0.00746
+
+2022-09-21 17:06:02,381 - [INFO] - [Epoch 16]: Training Loss: 0.6362, Best valid MRR: 0.00746
+
+
+2022-09-21 17:06:24,925 - [INFO] - [E:17| 0]: Train Loss:0.64546,  Val MRR:0.00746	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:10:25,379 - [INFO] - [Epoch:17]:  Training Loss:0.637
+
+2022-09-21 17:10:32,558 - [INFO] - [Evaluating Epoch 17 valid]: 
+	MRR: Tail : 0.00869, Head : 0.00622, Avg : 0.00746
+
+2022-09-21 17:10:32,558 - [INFO] - [Epoch 17]: Training Loss: 0.63702, Best valid MRR: 0.00746
+
+
+2022-09-21 17:10:55,397 - [INFO] - [E:18| 0]: Train Loss:0.6451,  Val MRR:0.00746	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:14:53,084 - [INFO] - [Epoch:18]:  Training Loss:0.6367
+
+2022-09-21 17:15:00,313 - [INFO] - [Evaluating Epoch 18 valid]: 
+	MRR: Tail : 0.0086, Head : 0.00628, Avg : 0.00744
+
+2022-09-21 17:15:00,313 - [INFO] - [Epoch 18]: Training Loss: 0.63672, Best valid MRR: 0.00746
+
+
+2022-09-21 17:15:23,286 - [INFO] - [E:19| 0]: Train Loss:0.64421,  Val MRR:0.00746	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:19:22,799 - [INFO] - [Epoch:19]:  Training Loss:0.6354
+
+2022-09-21 17:19:30,010 - [INFO] - [Evaluating Epoch 19 valid]: 
+	MRR: Tail : 0.00693, Head : 0.00663, Avg : 0.00678
+	MR: Tail : 1.1265e+04, Head : 1.6237e+04, Avg : 1.3751e+04
+	Hit-1: Tail : 0.0, Head : 0.00494, Avg : 0.00247
+	Hit-3: Tail : 0.00461, Head : 0.00593, Avg : 0.00527
+	Hit-10: Tail : 0.01648, Head : 0.00956, Avg : 0.01302
+2022-09-21 17:19:30,010 - [INFO] - [Epoch 19]: Training Loss: 0.63541, Best valid MRR: 0.00746
+
+
+2022-09-21 17:19:52,917 - [INFO] - [E:20| 0]: Train Loss:0.63591,  Val MRR:0.00746	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:23:53,844 - [INFO] - [Epoch:20]:  Training Loss:0.6338
+
+2022-09-21 17:24:01,054 - [INFO] - [Evaluating Epoch 20 valid]: 
+	MRR: Tail : 0.01062, Head : 0.00624, Avg : 0.00843
+
+2022-09-21 17:24:01,546 - [INFO] - [Epoch 20]: Training Loss: 0.63381, Best valid MRR: 0.00843
+
+
+2022-09-21 17:24:24,258 - [INFO] - [E:21| 0]: Train Loss:0.64187,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:28:22,218 - [INFO] - [Epoch:21]:  Training Loss:0.6364
+
+2022-09-21 17:28:29,401 - [INFO] - [Evaluating Epoch 21 valid]: 
+	MRR: Tail : 0.01061, Head : 0.00383, Avg : 0.00722
+
+2022-09-21 17:28:29,401 - [INFO] - [Epoch 21]: Training Loss: 0.63637, Best valid MRR: 0.00843
+
+
+2022-09-21 17:28:52,601 - [INFO] - [E:22| 0]: Train Loss:0.63543,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:32:51,960 - [INFO] - [Epoch:22]:  Training Loss:0.6283
+
+2022-09-21 17:32:59,142 - [INFO] - [Evaluating Epoch 22 valid]: 
+	MRR: Tail : 0.00844, Head : 0.00632, Avg : 0.00738
+
+2022-09-21 17:32:59,142 - [INFO] - [Epoch 22]: Training Loss: 0.62831, Best valid MRR: 0.00843
+
+
+2022-09-21 17:33:21,730 - [INFO] - [E:23| 0]: Train Loss:0.62202,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:37:21,553 - [INFO] - [Epoch:23]:  Training Loss:0.6288
+
+2022-09-21 17:37:28,810 - [INFO] - [Evaluating Epoch 23 valid]: 
+	MRR: Tail : 0.01015, Head : 0.00611, Avg : 0.00813
+
+2022-09-21 17:37:28,810 - [INFO] - [Epoch 23]: Training Loss: 0.62876, Best valid MRR: 0.00843
+
+
+2022-09-21 17:37:51,732 - [INFO] - [E:24| 0]: Train Loss:0.63183,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:41:49,305 - [INFO] - [Epoch:24]:  Training Loss:0.6259
+
+2022-09-21 17:41:56,606 - [INFO] - [Evaluating Epoch 24 valid]: 
+	MRR: Tail : 0.00772, Head : 0.00646, Avg : 0.00709
+
+2022-09-21 17:41:56,606 - [INFO] - [Epoch 24]: Training Loss: 0.62593, Best valid MRR: 0.00843
+
+
+2022-09-21 17:42:19,679 - [INFO] - [E:25| 0]: Train Loss:0.62375,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:46:17,263 - [INFO] - [Epoch:25]:  Training Loss:0.6251
+
+2022-09-21 17:46:24,483 - [INFO] - [Evaluating Epoch 25 valid]: 
+	MRR: Tail : 0.00821, Head : 0.00636, Avg : 0.00728
+
+2022-09-21 17:46:24,483 - [INFO] - [Epoch 25]: Training Loss: 0.6251, Best valid MRR: 0.00843
+
+
+2022-09-21 17:46:47,705 - [INFO] - [E:26| 0]: Train Loss:0.62277,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:50:45,006 - [INFO] - [Epoch:26]:  Training Loss:0.6243
+
+2022-09-21 17:50:52,194 - [INFO] - [Evaluating Epoch 26 valid]: 
+	MRR: Tail : 0.0105, Head : 0.00614, Avg : 0.00832
+
+2022-09-21 17:50:52,194 - [INFO] - [Epoch 26]: Training Loss: 0.62427, Best valid MRR: 0.00843
+
+
+2022-09-21 17:51:15,587 - [INFO] - [E:27| 0]: Train Loss:0.6238,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:55:15,923 - [INFO] - [Epoch:27]:  Training Loss:0.6261
+
+2022-09-21 17:55:23,103 - [INFO] - [Evaluating Epoch 27 valid]: 
+	MRR: Tail : 0.00974, Head : 0.0063, Avg : 0.00802
+
+2022-09-21 17:55:23,104 - [INFO] - [Epoch 27]: Training Loss: 0.62611, Best valid MRR: 0.00843
+
+
+2022-09-21 17:55:45,760 - [INFO] - [E:28| 0]: Train Loss:0.61414,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 17:59:44,833 - [INFO] - [Epoch:28]:  Training Loss:0.6247
+
+2022-09-21 17:59:52,080 - [INFO] - [Evaluating Epoch 28 valid]: 
+	MRR: Tail : 0.00884, Head : 0.00627, Avg : 0.00756
+
+2022-09-21 17:59:52,080 - [INFO] - [Epoch 28]: Training Loss: 0.62469, Best valid MRR: 0.00843
+
+
+2022-09-21 18:00:15,380 - [INFO] - [E:29| 0]: Train Loss:0.62545,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:04:13,752 - [INFO] - [Epoch:29]:  Training Loss:0.6229
+
+2022-09-21 18:04:21,025 - [INFO] - [Evaluating Epoch 29 valid]: 
+	MRR: Tail : 0.00871, Head : 0.00637, Avg : 0.00754
+	MR: Tail : 1.111e+04, Head : 1.6225e+04, Avg : 1.3667e+04
+	Hit-1: Tail : 0.00033, Head : 0.00494, Avg : 0.00264
+	Hit-3: Tail : 0.00461, Head : 0.00593, Avg : 0.00527
+	Hit-10: Tail : 0.02736, Head : 0.00791, Avg : 0.01763
+2022-09-21 18:04:21,026 - [INFO] - [Epoch 29]: Training Loss: 0.62286, Best valid MRR: 0.00843
+
+
+2022-09-21 18:04:43,803 - [INFO] - [E:30| 0]: Train Loss:0.64098,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:08:46,147 - [INFO] - [Epoch:30]:  Training Loss:0.6234
+
+2022-09-21 18:08:53,332 - [INFO] - [Evaluating Epoch 30 valid]: 
+	MRR: Tail : 0.00876, Head : 0.00625, Avg : 0.00751
+
+2022-09-21 18:08:53,332 - [INFO] - [Epoch 30]: Training Loss: 0.62342, Best valid MRR: 0.00843
+
+
+2022-09-21 18:09:16,300 - [INFO] - [E:31| 0]: Train Loss:0.61983,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:13:17,188 - [INFO] - [Epoch:31]:  Training Loss:0.6245
+
+2022-09-21 18:13:24,488 - [INFO] - [Evaluating Epoch 31 valid]: 
+	MRR: Tail : 0.00961, Head : 0.00629, Avg : 0.00795
+
+2022-09-21 18:13:24,489 - [INFO] - [Epoch 31]: Training Loss: 0.62448, Best valid MRR: 0.00843
+
+
+2022-09-21 18:13:47,916 - [INFO] - [E:32| 0]: Train Loss:0.62495,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:17:45,652 - [INFO] - [Epoch:32]:  Training Loss:0.6238
+
+2022-09-21 18:17:52,848 - [INFO] - [Evaluating Epoch 32 valid]: 
+	MRR: Tail : 0.01055, Head : 0.00617, Avg : 0.00836
+
+2022-09-21 18:17:52,848 - [INFO] - [Epoch 32]: Training Loss: 0.62379, Best valid MRR: 0.00843
+
+
+2022-09-21 18:18:15,605 - [INFO] - [E:33| 0]: Train Loss:0.62091,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:22:13,802 - [INFO] - [Epoch:33]:  Training Loss:0.623
+
+2022-09-21 18:22:20,997 - [INFO] - [Evaluating Epoch 33 valid]: 
+	MRR: Tail : 0.00917, Head : 0.00611, Avg : 0.00764
+
+2022-09-21 18:22:20,997 - [INFO] - [Epoch 33]: Training Loss: 0.62299, Best valid MRR: 0.00843
+
+
+2022-09-21 18:22:44,416 - [INFO] - [E:34| 0]: Train Loss:0.62164,  Val MRR:0.00843	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:26:41,282 - [INFO] - [Epoch:34]:  Training Loss:0.6251
+
+2022-09-21 18:26:48,592 - [INFO] - [Evaluating Epoch 34 valid]: 
+	MRR: Tail : 0.01094, Head : 0.00607, Avg : 0.0085
+
+2022-09-21 18:26:49,084 - [INFO] - [Epoch 34]: Training Loss: 0.6251, Best valid MRR: 0.0085
+
+
+2022-09-21 18:27:11,842 - [INFO] - [E:35| 0]: Train Loss:0.64236,  Val MRR:0.0085	HRAN_ConvD_21_09_2022_15:49:22
+2022-09-21 18:31:09,656 - [INFO] - [Epoch:35]:  Training Loss:0.6229
+
+2022-09-21 18:31:16,850 - [INFO] - [Evaluating Epoch 35 valid]: 
+	MRR: Tail : 0.00842, Head : 0.00621, Avg : 0.00731
+
+2022-09-21 18:31:16,851 - [INFO] - [Epoch 35]: Training Loss: 0.62293, Best valid MRR: 0.0085
+
+
+2022-09-21 18:31:39,964 - [INFO] - [E:36| 0]: Train Loss:0.61746,  Val MRR:0.0085	HRAN_ConvD_21_09_2022_15:49:22
+Killed
++ [ 137 -ne 0 ]
++ echo hran_convd failed
+hran_convd failed
++ exit 1
