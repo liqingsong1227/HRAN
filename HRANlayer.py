@@ -38,6 +38,7 @@ class HRANLayer(MessagePassing):
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.device = None
+        self.atten_dim = att_dim
         self.head_num = head_num
         self.num_rels = num_rels
         self.drop = torch.nn.Dropout(self.p.dropout)  # drop ratio for attention coefficient
@@ -54,8 +55,10 @@ class HRANLayer(MessagePassing):
         self.loop_rel = get_param((1, out_channels)).to(self.device)
         self.rel_linear = Linear(out_channels, out_channels, False)
         self.ent_linear = Linear(out_channels, out_channels, False)
-        self.rel_attention_transformation_weight = get_param((out_channels, att_dim))
-        self.attention_q = get_param((att_dim, 1))
+        self.rel_attention_transformation_weight = [get_param((out_channels, self.atten_dim)).to(self.device) for _ in range(self.head_num)]
+        self.rel_atten_bias = [get_param((1, self.atten_dim)).to(self.device) for _ in range(self.head_num)]
+        self.attention_q = [get_param((self.atten_dim, 1)).to(self.device) for _ in range(self.head_num)]
+        self.linear_after_atten = Linear(out_channels * head_num, out_channels)
         self.ent_level_aggre_index = torch.zeros(self.edge_index.shape[1] + self.p.num_ent, dtype=torch.int64).to(self.device)
         self.compute_ent_level_aggre_index()
         
@@ -65,15 +68,18 @@ class HRANLayer(MessagePassing):
         rel_embed = torch.cat([rel_embed, self.loop_rel], dim=0)
         edge_index = torch.cat([self.edge_index, self.loop_index], dim=1)
         edge_type = torch.cat([self.edge_type, self.loop_type])
-        out = self.propagate(edge_index, size=None, x=x, edge_type=edge_type, rel_embed=rel_embed, attention_q=self.attention_q, rel_attention_transformation_weight=self.rel_attention_transformation_weight)
+        out = self.propagate(edge_index, size=None, x=x, edge_type=edge_type, rel_embed=rel_embed, attention_q=self.attention_q, \
+            rel_attention_transformation_weight=self.rel_attention_transformation_weight, rel_atten_bias=self.rel_atten_bias, \
+            head_num=self.head_num)
         if self.p.bias:
             out = out + self.bias
         out = (1 - beta) * out + beta * x
         out = self.ent_linear(out)
         out = torch.nn.functional.relu(out)
         out = self.bn(out)
+        out = self.drop(out)
         rel_embed = self.rel_linear(rel_embed)
-        rel_mebed = torch.nn.functional.relu(rel_embed)
+        rel_embed = torch.nn.functional.relu(rel_embed)
         return out, rel_embed[:-1]
     
     def compute_ent_level_aggre_index(self):
@@ -91,22 +97,29 @@ class HRANLayer(MessagePassing):
                 self.ent_level_aggre_index[i] = ent_rel_type_set[(edge_index_i[i].item(), edge_type[i].item())]
         # print(sorted(list(ent_rel_type_set.items()), key=lambda x: x[0][0], reverse=True)[:10])
     
-    def message(self, x, edge_index_i, edge_index_j, edge_type, rel_embed, attention_q, rel_attention_transformation_weight):
+    def message(self, x, edge_index_i, edge_index_j, edge_type, rel_embed, attention_q, rel_attention_transformation_weight, rel_atten_bias, head_num):
         x = torch.index_select(x, 0, edge_index_j)
-        x = scatter(x, self.ent_level_aggre_index, dim=0, reduce='add')   #entity-level aggregation
+        x = scatter(x, self.ent_level_aggre_index, dim=0, reduce='mean')   #entity-level aggregation
         
-        edge_type_node = scatter(edge_type, self.ent_level_aggre_index, dim=0, reduce='mean')
+        edge_type_node = scatter(edge_type, self.ent_level_aggre_index, dim=0, reduce='max')
         # print('shape after node aggr:', edge_type_node.shape)
-        rel_embed = torch.matmul(rel_embed, rel_attention_transformation_weight)
-        rel_embed = torch.tanh(rel_embed)
-        rel_embed = torch.index_select(rel_embed, dim=0, index=edge_type_node)
-        rel_embed = self.drop(rel_embed)
-        rel_embed = torch.matmul(rel_embed, attention_q)
-        rel_embed = torch.sigmoid(rel_embed)
-        return rel_embed * x
+        attentions = []
+        for i in range(head_num):
+            rel_transed = torch.matmul(rel_embed, rel_attention_transformation_weight[i])
+            rel_transed += rel_atten_bias[i]
+            rel_transed = torch.tanh(rel_transed)
+            rel_selected = torch.index_select(rel_transed, dim=0, index=edge_type_node)
+            rel_alpha = torch.matmul(rel_selected, attention_q[i])
+            rel_alpha = torch.sigmoid(rel_alpha)
+            attentions.append(rel_alpha * x)   # shape_after_ent_agg * embedding_dim
+        atten_vector = torch.stack(attentions, dim=0)
+        atten_vector = atten_vector.permute(1, 2, 0)
+        atten_vector = torch.reshape(atten_vector, (x.shape[0], x.shape[1] * head_num))
+        atten_vector = torch.nn.functional.relu(self.linear_after_atten(atten_vector))
+        return atten_vector
     
     def aggregate(self, inputs, index):
-        rel_level_aggre_index = scatter(index, self.ent_level_aggre_index, dim=0, reduce='mean')
+        rel_level_aggre_index = scatter(index, self.ent_level_aggre_index, dim=0, reduce='max')
         out = scatter(inputs, rel_level_aggre_index, dim=self.node_dim, reduce=self.aggr)
         # print('shape after aggregate:', out.shape)
         return out

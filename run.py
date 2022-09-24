@@ -482,7 +482,7 @@ if __name__ == '__main__':
     parser.add_argument('-restore', dest='restore', action='store_true', help='Restore from the previously saved model')
     parser.add_argument('-bias', dest='bias', action='store_true', help='Whether to use bias in the model')
     parser.add_argument('-aggr', dest='aggr', default='add', help='aggregation function in graph attention layer')
-    parser.add_argument('-beta', dest='beta', default=0.5, help='weight of self loop')
+    parser.add_argument('-beta', dest='beta', default=0.3, help='weight of additional self loop')
     parser.add_argument('-init_dim', dest='init_dim', default=100, type=int,
                         help='Initial dimension size for entities and relations')
     parser.add_argument('-gcn_dim', dest='gcn_dim', default=200, type=int, help='Number of hidden units in GCN')
@@ -490,11 +490,11 @@ if __name__ == '__main__':
                         help='Embedding dimension to give as input to score function')
     parser.add_argument('-gcn_layer', dest='gcn_layer', default=1, type=int, help='Number of GCN Layers to use')
     parser.add_argument('-gcn_drop', dest='dropout', default=0.4, type=float, help='Dropout to use in GCN Layer')
-    parser.add_argument('-hid_drop', dest='hid_drop', default=0.3, type=float, help='Dropout after GCN')
+    parser.add_argument('-hid_drop', dest='hid_drop', default=0.1, type=float, help='Dropout after GCN')
 
     # ConvE specific hyperparameters
-    parser.add_argument('-hid_drop2', dest='hid_drop2', default=0.3, type=float, help='ConvE: Hidden dropout')
-    parser.add_argument('-feat_drop', dest='feat_drop', default=0.3, type=float, help='ConvE: Feature Dropout')
+    parser.add_argument('-hid_drop2', dest='hid_drop2', default=0.1, type=float, help='ConvE: Hidden dropout')
+    parser.add_argument('-feat_drop', dest='feat_drop', default=0.1, type=float, help='ConvE: Feature Dropout')
     parser.add_argument('-k_w', dest='k_w', default=10, type=int, help='ConvE: k_w')
     parser.add_argument('-k_h', dest='k_h', default=20, type=int, help='ConvE: k_h')
     parser.add_argument('-num_filt', dest='num_filt', default=48, type=int,
@@ -507,9 +507,10 @@ if __name__ == '__main__':
     parser.add_argument('-neg_num', dest="neg_num", default=100, type=int,
                         help='Number of negative samples to use for loss calculation')
     parser.add_argument("-strategy", type=str, default='one_to_n', help='Training strategy to use')
-    parser.add_argument('-head_num', dest="head_num", default=1, type=int, help="Number of attention heads")
+    parser.add_argument('-head_num', dest="head_num", default=8, type=int, help="Number of attention heads")
+    parser.add_argument('-att_dim', dest='att_dim', default=200, type=int, help='dim of attention vector')
     parser.add_argument('-early_stop', dest="early_stop", default=200, type=int, help="number of early_stop")
-    parser.add_argument('-no_enc', dest='no_enc', action='store_true', help='whether to use non_linear function')
+    parser.add_argument('-no_enc', dest='no_enc', action='store_true', help='whether to use gcn function')
     parser.add_argument('-max_gamma', type=float, default=5.0, help='Margin')
     parser.add_argument('-fix_gamma', dest='fix_gamma', action='store_true', help='whether to use non_linear function')
     parser.add_argument('-init_gamma', type=float, default=9.0, help='Margin')

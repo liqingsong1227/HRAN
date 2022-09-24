@@ -52,13 +52,13 @@ class BaseModel(torch.nn.Module):
         self.pca = SparseInputLinear(self.p.init_dim, self.p.gcn_dim).to(self.device)
         conv_ls = []
         for i in range(self.p.gcn_layer):
-            conv = HRANLayer(self.edge_index, self.edge_type, self.p.init_dim, self.p.gcn_dim, num_rel, params=self.p)
+            conv = HRANLayer(self.edge_index, self.edge_type, self.p.init_dim, self.p.gcn_dim, num_rel, params=self.p, head_num=self.p.head_num, att_dim=self.p.att_dim)
             self.add_module('conv_{}'.format(i), conv)
             conv_ls.append(conv)
         self.conv_ls = conv_ls
         self.register_parameter('bias', Parameter(torch.zeros(self.p.num_ent)))
         self.p = params
-        self.act = torch.tanh
+        self.act = torch.relu
         self.bceloss = torch.nn.BCELoss()   #交叉熵
         
     def forward_base(self, sub, rel, beta, drop1, drop2):
@@ -106,7 +106,7 @@ class HRAN_TransE(BaseModel):
         sub_emb, rel_emb, all_ent = self.forward_base(sub, rel, self.beta, self.drop, self.drop)
         obj_emb = sub_emb + rel_emb   #batch * dim
         if neg_ents == None:
-            neg_obj_emb = torch.stack([all_ent for _ in range(sub.shape[0])], dim=0)
+            neg_obj_emb = torch.stack([all_ent for _ in range(sub.shape[0])], dim=0)  #batch * neg * embed
         else:
             neg_obj_emb = all_ent[neg_ents]  #batch * (neg_num + 1)* dim
         x = self.p.gamma - torch.norm(obj_emb.unsqueeze(1) - neg_obj_emb, p=2, dim=2)  #batch * (neg_num + 1) * 1
